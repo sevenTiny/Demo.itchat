@@ -9,6 +9,7 @@ import requests
 
 # 需要参与聊天的群昵称
 chatGroup = ['仨2', '歪，玖妖灵吗？', 'temp']
+# 图灵的站点：http://www.turingapi.com/
 # 这里填写图灵网站申请的机器人apiKey
 tulingApiKey = ''
 # 这里填写图灵网站注册的userid
