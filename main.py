@@ -21,7 +21,7 @@ def sleepTime(msg):
     time.sleep(int(len(msg)/3)+1)
 
 # 请求图灵api数据
-def getChatData(msg):
+def getTulingChatData(msg):
     uri = 'http://openapi.tuling123.com/openapi/api/v2'
     jsonData = {
         "reqType": 0,
@@ -54,7 +54,7 @@ def text_reply(msg):
     sleepTime(content)
 
     if messageFrom in chatGroup:
-        sendMsg = getChatData(content)
+        sendMsg = getTulingChatData(content)
         print('sent message to '+messageFrom + ',Message:'+sendMsg)
         itchat.send(sendMsg, msg['FromUserName'])
 
