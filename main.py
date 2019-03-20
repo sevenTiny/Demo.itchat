@@ -8,12 +8,12 @@ import time
 import requests
 
 # 需要参与聊天的群昵称
-chatGroup = ['仨2', '歪，玖妖灵吗？', 'temp']
+chatGroup = ['仨2', '歪，玖妖灵吗？', 'temp','temp2']
 # 图灵的站点：http://www.turingapi.com/
 # 这里填写图灵网站申请的机器人apiKey
 tulingApiKey = ''
 # 这里填写图灵网站注册的userid
-tulingUserId = ''
+tulingUserId = '417057'
 
 
 # 根据长度返回响应时间
@@ -41,6 +41,10 @@ def getTulingChatData(msg):
     value = values[0]['values']['text']
     return value
 
+#获取聊天回复
+def getChatData(msg):
+    #走图灵机器人
+    return getTulingChatData(msg)
 
 @itchat.msg_register([TEXT], isGroupChat=True)
 def text_reply(msg):
@@ -54,10 +58,9 @@ def text_reply(msg):
     sleepTime(content)
 
     if messageFrom in chatGroup:
-        sendMsg = getTulingChatData(content)
-        print('sent message to '+messageFrom + ',Message:'+sendMsg)
-        itchat.send(sendMsg, msg['FromUserName'])
-
+        replyMsg = getChatData(content)
+        print('sent message to '+messageFrom + ',Message:'+replyMsg)
+        itchat.send(replyMsg, msg['FromUserName'])
 
 itchat.auto_login(enableCmdQR=True, hotReload=True)
 itchat.run()
